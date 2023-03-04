@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CreateRoom from "./CreateRoom";
+import About from "./About";
 
 function AppRoutes() {
     return (
@@ -8,7 +9,14 @@ function AppRoutes() {
                 {/* Home Page */}
                 <Route exact path="/" element={<CreateRoom />} />
 
-                {/* TODO: Add About, Rooms, and 404 pages */}
+                {/* About Page */}
+                <Route exact path="/about" element={<About />} />
+
+                {/* TODO: Add room page */}
+                <Route exact path="/room" element={<></>} />
+
+                {/* TODO: Add 404 page */}
+                <Route path="*" element={<></>} />
             </Routes>
         </main>
     )

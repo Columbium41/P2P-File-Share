@@ -1,0 +1,21 @@
+.text-section {
+    width: 60%;
+    margin: 0 auto;
+}
+.text-section h2 {
+    margin-bottom: 1ch;
+    text-indent: 1rem;
+}
+
+.text-link {
+    color: #9000a8;
+    transition: filter 0.3s;
+}
+.text-link:hover {
+    filter: grayscale(20%);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
