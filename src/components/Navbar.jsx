@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
@@ -6,10 +7,10 @@ function Navbar() {
             {/* Navbar Links */}
             <ul className="links">
                 <li>
-                    <a href="" target="_blank">Home</a>
+                    <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <a href="" target="_blank">About</a>
+                    <Link to="/about">About</Link>
                 </li>
                 <li>
                     <a href="https://github.com/Columbium41/HackTheHill" target="_blank">Github</a>

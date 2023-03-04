@@ -1,17 +1,20 @@
 import './App.css'
 import Navbar from './components/Navbar';
 import AppRoutes from './components/AppRoutes';
+import { BrowserRouter as Router } from 'react-router-dom'; 
 
 function App() {
   return (
     <div className="App">
-      {/* Navbar */}
-      <Navbar></Navbar>
+      <Router>
+        {/* Navbar */}
+        <Navbar></Navbar>
 
-      {/* Main Content */}
-      <AppRoutes></AppRoutes>
+        {/* Main Content */}
+        <AppRoutes></AppRoutes>
 
-      {/* TODO: Add Footer */}
+        {/* TODO: Add Footer */}
+      </Router>
     </div>
   )
 }
