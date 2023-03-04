@@ -1,3 +1,8 @@
-.about {
-    border: 1px solid red;
+.text-section {
+    width: 60%;
+    margin: 0 auto;
+}
+.text-section h2 {
+    margin-bottom: 1ch;
+    text-indent: 1rem;
 }
