@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CreateRoom from "./CreateRoom";
 import About from "./About";
+import NotFound from "./NotFound";
 
 function AppRoutes() {
     return (
@@ -16,7 +17,7 @@ function AppRoutes() {
                 <Route exact path="/room" element={<></>} />
 
                 {/* TODO: Add 404 page */}
-                <Route path="*" element={<></>} />
+                <Route path="*" element={<NotFound/>} />
             </Routes>
         </main>
     )

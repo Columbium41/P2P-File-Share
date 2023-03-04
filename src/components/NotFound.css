@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.div {
+    color: crimson;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 50px;
+}
