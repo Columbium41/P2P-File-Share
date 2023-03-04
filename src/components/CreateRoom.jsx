@@ -1,3 +1,5 @@
+import './CreateRoom.css';
+
 function CreateRoom() {
     // Function that runs whenever the 'Create Room' button is created
     const createRoom = () => {
