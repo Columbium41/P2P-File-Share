@@ -4,14 +4,12 @@ import CreateRoom from "./CreateRoom";
 function AppRoutes() {
     return (
         <main>
-            <Router>
+            <Routes>
                 {/* Home Page */}
-                <Routes>
-                    <Route exact path="/" element={<CreateRoom />} />
-                </Routes>
+                <Route exact path="/" element={<CreateRoom />} />
 
                 {/* TODO: Add About, Rooms, and 404 pages */}
-            </Router>
+            </Routes>
         </main>
     )
 }
