@@ -1,13 +1,17 @@
 import './App.css'
+import Navbar from './components/Navbar';
+import AppRoutes from './components/AppRoutes';
 
 function App() {
   return (
     <div className="App">
-      <div className="create-room-container">
-        <button className="create-room-button">
-          <h2>Create Room</h2>
-        </button>
-      </div>
+      {/* Navbar */}
+      <Navbar></Navbar>
+
+      {/* Main Content */}
+      <AppRoutes></AppRoutes>
+
+      {/* TODO: Add Footer */}
     </div>
   )
 }
