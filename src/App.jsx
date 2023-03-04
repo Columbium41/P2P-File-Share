@@ -1,14 +1,21 @@
 import './App.css'
+import Navbar from './components/Navbar';
+import AppRoutes from './components/AppRoutes';
+import { BrowserRouter as Router } from 'react-router-dom'; 
 
 
 function App() {
   return (
     <div className="App">
-      <div className="create-room-container">
-        <button className="create-room-button">
-          <h2>Create Room</h2>
-        </button>
-      </div>
+      <Router>
+        {/* Navbar */}
+        <Navbar></Navbar>
+
+        {/* Main Content */}
+        <AppRoutes></AppRoutes>
+
+        {/* TODO: Add Footer */}
+      </Router>
     </div>
   )
 }
