@@ -1,9 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import './CreateRoom.css';
 
 function CreateRoom() {
     // Function that runs whenever the 'Create Room' button is created
+    let navigate = useNavigate();
     const createRoom = () => {
         console.log("Clicked Created Room");
+        navigate("/room");
     }
 
     return (
