@@ -1,3 +1,9 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .text-link {
     color: #9000a8;
     transition: filter 0.3s;
