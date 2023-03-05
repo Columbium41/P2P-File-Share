@@ -9,6 +9,7 @@ function Room({ peer }) {
     const [otherPeer, setOtherPeer] = useState(null);
     const [downloadedFile, setDownloadedFile] = useState(null);
     const [fileName, setFileName] = useState('');
+    const [downloadProgress, setDownloadProgress] = useState(0);
 
     const fileChunks = [];
     var fileSize=999;
@@ -36,11 +37,13 @@ function Room({ peer }) {
             otherPeer.on('data', (data) => {
                 if (data.type === "size") {
                     fileSize = data.size;
+                    setDownloadProgress((fileChunks.length / fileSize) * 100);
                 }
                 else if (data.fileName) {
                     setFileName(data.fileName);
                 } else {
                     fileChunks.push(data);
+                    setDownloadProgress((fileChunks.length / fileSize) * 100);
                     if (fileSize !== null && fileChunks.length === fileSize) {
                         const file = new Blob(fileChunks);
                         setDownloadedFile(file);
@@ -63,8 +66,8 @@ function Room({ peer }) {
                 </button>
 
                 <div>
-                    <p>File Name</p>    
-                    <progress value="0" max="100"></progress>
+                    <p>{fileName}</p>
+                    <progress value={downloadProgress} max="100"></progress>
                 </div>
         </div>
     )
