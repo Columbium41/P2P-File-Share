@@ -1,0 +1,26 @@
+.upload-file-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1ch;
+}
+
+#upload-file-button {
+    font-family: inherit;
+
+    padding: 2ch;
+    font-size: 1rem;
+    background: #0eed21;
+    border: none;
+    border-radius: 8px;
+    transition: filter 0.25s;
+}
+#upload-file-button:hover {
+    cursor: pointer;
+    filter: grayscale(25%);
+}
+
+#file-upload {
+    border: 1px solid red;
+}

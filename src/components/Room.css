@@ -6,3 +6,7 @@
     margin-bottom: 1ch;
     text-indent: 1rem;
 }
+
+video {
+    border: 1px solid red;
+}
