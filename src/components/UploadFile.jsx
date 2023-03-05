@@ -3,6 +3,7 @@ import './UploadFile.css';
 import download from 'downloadjs';
 
 function UploadFile({ peer, setPeer, file, setFile, generatedLink, setGeneratedLink }) {
+
     // Function that runs whenever the 'Create Room' button is created
     const createRoom = () => {
         if (peer === null && file !== null && !generatedLink) {
@@ -70,6 +71,7 @@ function UploadFile({ peer, setPeer, file, setFile, generatedLink, setGeneratedL
               onChange={(e) => {setFile(e.target.files[0]);}} 
               disabled={generatedLink} 
             />
+            
             {file !== null && <p>{`${file.name} - ${file.size / 1000}Kb`}</p>}
             {file === null && <p>No File Chosen.</p>}
 
