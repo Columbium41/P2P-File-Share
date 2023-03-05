@@ -34,3 +34,11 @@
     margin-top: 2ch;
     background-color: #5684f5;
 }
+
+.copy-to-clipboard {
+    color: purple;
+    text-decoration: underline;
+}
+.copy-to-clipboard:hover {
+    cursor: pointer;
+}
