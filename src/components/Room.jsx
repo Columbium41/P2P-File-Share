@@ -1,15 +1,16 @@
 import './Room.css';
 import {Peer} from 'peerjs';
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import download from 'downloadjs';
 
 function Room({ peer }) {
     const peerId = useParams().id;
     const [otherPeer, setOtherPeer] = useState(null);
+    const [downloadedFile, setDownloadedFile] = useState(null);
+    const [fileName, setFileName] = useState('');
 
     const fileChunks = [];
-    var fileName="";
     var fileSize=999;
 
     useEffect(() => {
@@ -37,12 +38,12 @@ function Room({ peer }) {
                     fileSize = data.size;
                 }
                 else if (data.fileName) {
-                    fileName = data.fileName;
+                    setFileName(data.fileName);
                 } else {
                     fileChunks.push(data);
                     if (fileSize !== null && fileChunks.length === fileSize) {
                         const file = new Blob(fileChunks);
-                        download(file, fileName);
+                        setDownloadedFile(file);
                     }
                 }
             });
@@ -50,14 +51,22 @@ function Room({ peer }) {
     }, [otherPeer]);
 
     return (
-        <div className="about text-section">
-            <h2>Room</h2>
-            <p>
-                Share this Link:&nbsp;
-                {`http://localhost:5173/${peerId}`}
-            </p>
-        </div>
+        <div className="room">
+                <h2>Room</h2>
 
+                <button className="download-button" onClick={() => {
+                    if (downloadedFile !== null) {
+                        download(downloadedFile, fileName);
+                    }
+                }}>
+                    Download
+                </button>
+
+                <div>
+                    <p>File Name</p>    
+                    <progress value="0" max="100"></progress>
+                </div>
+        </div>
     )
 }
 

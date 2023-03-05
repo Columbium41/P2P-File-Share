@@ -7,7 +7,8 @@
 }
 
 #upload-file-button,
-.generate-link {
+.generate-link,
+.download-button {
     font-family: inherit;
 
     padding: 2ch;
@@ -18,7 +19,8 @@
     transition: filter 0.25s;
 }
 #upload-file-button:hover,
-.generate-link:hover {
+.generate-link:hover,
+.download-button {
     cursor: pointer;
     filter: grayscale(25%);
 }

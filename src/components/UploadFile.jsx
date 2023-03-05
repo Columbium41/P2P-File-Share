@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import {Peer} from 'peerjs';
 import './UploadFile.css';
 import download from 'downloadjs';
 
 function UploadFile({ peer, setPeer, file, setFile, generatedLink, setGeneratedLink }) {
+
     // Function that runs whenever the 'Create Room' button is created
     const createRoom = () => {
         if (peer === null && file !== null && !generatedLink) {
@@ -71,6 +71,7 @@ function UploadFile({ peer, setPeer, file, setFile, generatedLink, setGeneratedL
               onChange={(e) => {setFile(e.target.files[0]);}} 
               disabled={generatedLink} 
             />
+            
             {file !== null && <p>{`${file.name} - ${file.size / 1000}Kb`}</p>}
             {file === null && <p>No File Chosen.</p>}
 
@@ -78,7 +79,7 @@ function UploadFile({ peer, setPeer, file, setFile, generatedLink, setGeneratedL
 
             {generatedLink && peer._id !== null &&
             <div>
-                <p>{`Share this link: localhost:5173/room/${peer._id}`}</p>
+                <p>{`Share this link: https://hth-watchparty.netlify.app/room/${peer._id}`}</p>
             </div>}
         </div>
     )
