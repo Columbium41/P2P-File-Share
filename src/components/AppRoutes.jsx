@@ -4,12 +4,12 @@ import About from "./About";
 import NotFound from "./NotFound";
 import Room from "./Room";
 
-function AppRoutes({ peer, setPeer }) {
+function AppRoutes({ peer, setPeer, file, setFile, generatedLink, setGeneratedLink }) {
     return (
         <main>
             <Routes>
                 {/* Home Page */}
-                <Route exact path="/" element={<UploadFile peer={peer} setPeer={setPeer} />} />
+                <Route exact path="/" element={<UploadFile peer={peer} setPeer={setPeer} file={file} setFile={setFile} generatedLink={generatedLink} setGeneratedLink={setGeneratedLink} />} />
 
                 {/* About Page */}
                 <Route exact path="/about" element={<About />} />
