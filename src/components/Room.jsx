@@ -8,6 +8,10 @@ function Room({ peer }) {
     const peerId = useParams().id;
     const [otherPeer, setOtherPeer] = useState(null);
 
+    const fileChunks = [];
+    var fileName="";
+    var fileSize=999;
+
     useEffect(() => {
         if (peer !== null) {
             // Set other peer
@@ -28,12 +32,19 @@ function Room({ peer }) {
 
     useEffect(() => {
         if (otherPeer !== null) {
-            console.log(otherPeer);
             otherPeer.on('data', (data) => {
-                download(new File([data], "download"));
-                // const file = new Blob([data]);
-                // console.log('recieved');
-                // download(file);
+                if (data.type === "size") {
+                    fileSize = data.size;
+                }
+                else if (data.fileName) {
+                    fileName = data.fileName;
+                } else {
+                    fileChunks.push(data);
+                    if (fileSize !== null && fileChunks.length === fileSize) {
+                        const file = new Blob(fileChunks);
+                        download(file, fileName);
+                    }
+                }
             });
         }
     }, [otherPeer]);

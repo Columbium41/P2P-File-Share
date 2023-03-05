@@ -28,15 +28,33 @@ function UploadFile({ peer, setPeer }) {
                         console.log(err);
                     });
     
-                    const blob = new Blob([file], { type: file.type })
                     conn.on("open", () => {
+                        file.arrayBuffer().then(buffer => {
+                            const chunksize = 8 * 1024;
+                            conn.send({size: Math.ceil(buffer.byteLength / chunksize), type: "size"});
+                            console.log(buffer.byteLength);
+                            conn.send({fileName: file.name});
+                            while (buffer.byteLength) {
+                                const chunk = buffer.slice(0, chunksize);
+                                // if (chunksize > buffer.byteLength) {
+                                //     conn.send(buffer.slice(0, buffer.byteLength));
+                                //     break;
+                                // } else {
+                                buffer = buffer.slice(chunksize, buffer.byteLength);
+                                console.log(buffer.byteLength);
+                                console.log("sending chunks");
+                                conn.send(chunk);
+                                // }
+                            }
+                        })
+
                         // conn.send({
                         //     file: blob,
                         //     filename: file.name,
                         //     filetype: file.type
                         //   })
-                        console.log(file);
-                        conn.send(file);
+                        // console.log(file);
+                        // conn.send(file);
                     })
                 });
             })
