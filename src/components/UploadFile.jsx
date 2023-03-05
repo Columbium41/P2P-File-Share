@@ -87,7 +87,7 @@ function UploadFile({ peer, setPeer, file, setFile, generatedLink, setGeneratedL
                         navigator.clipboard.writeText(copyText);
                       }}
                     >
-                        {`https://hth-watchparty.netlify.app/room/${peer._id}`}
+                        {`https://hth-fileshare.netlify.app/room/${peer._id}`}
                     </span>
                 </p>
             </div>}
