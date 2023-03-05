@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import {Peer} from 'peerjs';
 import { useNavigate } from 'react-router-dom';
 import './UploadFile.css';
 
 function UploadFile({ setPeer }) {
+    const [fileChosen, setFileChosen] = useState('No File Chosen.');
+     
     let navigate = useNavigate();
 
     // Function that runs whenever the 'Create Room' button is created
@@ -18,9 +21,11 @@ function UploadFile({ setPeer }) {
     return (
         <div className="upload-file-container">
             {/* Create Room Button */}
-            <button className="upload-file-button" onClick={createRoom}>
-                <h2>Upload File</h2>
-            </button>
+            <label htmlFor="file-upload" id="upload-file-button">Upload File</label>
+            <input type="file" id="file-upload" hidden onChange={(e) => {
+                setFileChosen(`${e.target.files[0].name} - ${e.target.files[0].size / 1000}Kb`);
+            }} />
+             {fileChosen}
         </div>
     )
 }

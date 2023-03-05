@@ -20,13 +20,6 @@ function Room({ peer }) {
             peer.on('call', function(call) {
                 call.answer();
                 console.log(call);
-                
-                call.on('stream', function(stream) {
-                    // `stream` is the MediaStream of the remote peer.
-                    // Here you'd add it to an HTML video/canvas element.
-                    console.log(stream);
-                    videoRef.current.srcObject = stream;
-                });
             });
         }
 

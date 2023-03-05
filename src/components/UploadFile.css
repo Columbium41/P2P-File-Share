@@ -1,9 +1,13 @@
-.upload-file-button {
+.upload-file-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1ch;
+}
+
+#upload-file-button {
     font-family: inherit;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 
     padding: 2ch;
     font-size: 1rem;
@@ -12,6 +16,11 @@
     border-radius: 8px;
     transition: filter 0.25s;
 }
-.upload-file-button:hover {
+#upload-file-button:hover {
+    cursor: pointer;
     filter: grayscale(25%);
+}
+
+#file-upload {
+    border: 1px solid red;
 }
