@@ -1,4 +1,4 @@
-.create-room-button {
+.upload-file-button {
     font-family: inherit;
     position: absolute;
     top: 50%;
@@ -12,6 +12,6 @@
     border-radius: 8px;
     transition: filter 0.25s;
 }
-.create-room-button:hover {
+.upload-file-button:hover {
     filter: grayscale(25%);
 }

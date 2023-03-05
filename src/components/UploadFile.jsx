@@ -1,9 +1,8 @@
-import { useState } from 'react';
 import {Peer} from 'peerjs';
 import { useNavigate } from 'react-router-dom';
-import './CreateRoom.css';
+import './UploadFile.css';
 
-function CreateRoom({ setPeer }) {
+function UploadFile({ setPeer }) {
     let navigate = useNavigate();
 
     // Function that runs whenever the 'Create Room' button is created
@@ -17,13 +16,13 @@ function CreateRoom({ setPeer }) {
     }
 
     return (
-        <div className="create-room-container">
+        <div className="upload-file-container">
             {/* Create Room Button */}
-            <button className="create-room-button" onClick={createRoom}>
-                <h2>Create Room</h2>
+            <button className="upload-file-button" onClick={createRoom}>
+                <h2>Upload File</h2>
             </button>
         </div>
     )
 }
 
-export default CreateRoom;
+export default UploadFile   ;

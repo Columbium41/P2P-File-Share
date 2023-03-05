@@ -1,13 +1,12 @@
 import './Room.css';
 import {Peer} from 'peerjs';
-import {useEffect, useState, useRef} from 'react';
+import {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 
 function Room({ peer }) {
     const peerId = useParams().id;
 
     const [otherPeer, setOtherPeer] = useState('');
-    const videoRef = useRef(null);
 
     useEffect(() => {
         if (peer !== null) {
@@ -45,15 +44,10 @@ function Room({ peer }) {
     return (
         <div className="about text-section">
             <h2>Room</h2>
-            <video ref={videoRef}></video>
-            <button onClick={ async () => {
-                let mediaStream = await navigator.mediaDevices.getDisplayMedia({
-                    audio: true,
-                    video: true
-                });
-                videoRef.current.srcObject = mediaStream;
-                peer.call(otherPeer, mediaStream);
-            }}>share screen</button>
+            <p>
+                Share this Link:&nbsp;
+                {`http://localhost:5173/${peerId}`}
+            </p>
         </div>
     )
 }
