@@ -1,9 +1,19 @@
+import { useState } from 'react';
+import {Peer} from 'peerjs';
+import { useNavigate } from 'react-router-dom';
 import './CreateRoom.css';
 
-function CreateRoom() {
+function CreateRoom({ setPeer }) {
+    let navigate = useNavigate();
+
     // Function that runs whenever the 'Create Room' button is created
-    const createRoom = () => {
-        console.log("Clicked Created Room");
+    const createRoom = async () => {
+        const newPeer = await new Peer();
+        setPeer(newPeer);
+
+        newPeer.on("open", () => {
+            navigate(`/room/${newPeer._id}`);
+        })
     }
 
     return (
