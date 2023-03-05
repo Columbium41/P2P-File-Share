@@ -25,7 +25,7 @@ We made this web app using the React JavaScript library and PeerJS, a wrapper fo
 - Learning how to efficiently use git and github in a collaborative environment
 
 ## Accomplishments that we're proud of
-At the end of the day, [me and my teammates](#Collaborators) are proud that we made a (semi) functional web app from scratch in 48 hours. None of our teammates have used WebRTC before so we were glad we could make a final product with what little knowledge we had.
+At the end of the day, [me and my teammates](#Collaborators) are proud that we made a (semi) functional web app from scratch in 36 hours. None of our teammates have used WebRTC before so we were glad we could make a final product with what little knowledge we had.
 
 ## What we learned
 - React & Client-side routing
