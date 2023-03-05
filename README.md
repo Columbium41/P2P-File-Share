@@ -36,6 +36,7 @@ At the end of the day, [me and my teammates](#Collaborators) are proud that we m
 - Uploading more than one file
 - Not having to refresh the page to upload more files
 - Better methods of sending data
+- A progress bar to display file being sent
 
 ## Collaborators
  - [Me](https://github.com/Columbium41/) (In-Person)
