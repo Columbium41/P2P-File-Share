@@ -1,4 +1,4 @@
-# Hack the Hill - WatchParty (WIP)
+# Hack the Hill - File Share
 
 ## Table of Contents
 - [About](#About)
