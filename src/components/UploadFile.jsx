@@ -71,7 +71,7 @@ function UploadFile({ peer, setPeer, file, setFile, generatedLink, setGeneratedL
               onChange={(e) => {setFile(e.target.files[0]);}} 
               disabled={generatedLink} 
             />
-            
+
             {file !== null && <p>{`${file.name} - ${file.size / 1000}Kb`}</p>}
             {file === null && <p>No File Chosen.</p>}
 
@@ -79,7 +79,17 @@ function UploadFile({ peer, setPeer, file, setFile, generatedLink, setGeneratedL
 
             {generatedLink && peer._id !== null &&
             <div>
-                <p>{`Share this link: https://hth-watchparty.netlify.app/room/${peer._id}`}</p>
+                <p>{`Click to copy this link: `}
+                    <span 
+                      className="copy-to-clipboard"
+                      onClick={(e) => {
+                        const copyText = e.target.innerText;
+                        navigator.clipboard.writeText(copyText);
+                      }}
+                    >
+                        {`https://hth-watchparty.netlify.app/room/${peer._id}`}
+                    </span>
+                </p>
             </div>}
         </div>
     )
