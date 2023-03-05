@@ -3,10 +3,7 @@ import {Peer} from 'peerjs';
 import './UploadFile.css';
 import download from 'downloadjs';
 
-function UploadFile({ peer, setPeer }) {
-    const [file, setFile] = useState(null);
-    const [generatedLink, setGeneratedLink] = useState(false);
-     
+function UploadFile({ peer, setPeer, file, setFile, generatedLink, setGeneratedLink }) {
     // Function that runs whenever the 'Create Room' button is created
     const createRoom = () => {
         if (peer === null && file !== null && !generatedLink) {

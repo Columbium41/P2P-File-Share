@@ -17,12 +17,7 @@ function App() {
         <Navbar></Navbar>
 
         {/* Main Content */}
-<<<<<<< HEAD
-        <AppRoutes peer={peer} setPeer={setPeer}></AppRoutes>
-=======
-        <AppRoutes peer={peer} setPeer={setPeer} file={file} setFile={setFile} generatedLink={generatedLink} setGeneratedLink={setGeneratedLink} ></AppRoutes>
->>>>>>> b077748a2e48f760fc9519bd71a0401b376c9062
-
+        <AppRoutes peer={peer} setPeer={setPeer} file={file} setFile={setFile} generatedLink={generatedLink} setGeneratedLink={setGeneratedLink}></AppRoutes>
         {/* TODO: Add Footer */}
         <Footer></Footer>
       </Router>
