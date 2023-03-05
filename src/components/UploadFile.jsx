@@ -1,21 +1,24 @@
 import { useState } from 'react';
 import {Peer} from 'peerjs';
-import { useNavigate } from 'react-router-dom';
 import './UploadFile.css';
 
-function UploadFile({ setPeer }) {
-    const [fileChosen, setFileChosen] = useState('No File Chosen.');
+function UploadFile({ peer, setPeer }) {
+    const [file, setFile] = useState(null);
+    const [generatedLink, setGeneratedLink] = useState(false);
      
-    let navigate = useNavigate();
-
     // Function that runs whenever the 'Create Room' button is created
-    const createRoom = async () => {
-        const newPeer = await new Peer();
-        setPeer(newPeer);
+    const createRoom = () => {
+        if (file !== null) {
+            const newPeer = new Peer();
+            setPeer(newPeer);
 
-        newPeer.on("open", () => {
-            navigate(`/room/${newPeer._id}`);
-        })
+            newPeer.on("open", () => {
+                setGeneratedLink(true);
+            })
+            newPeer.on("connection", (conn) => {
+                console.log("connected to ", conn.peer);
+            });
+        }
     }
 
     return (
@@ -23,11 +26,19 @@ function UploadFile({ setPeer }) {
             {/* Create Room Button */}
             <label htmlFor="file-upload" id="upload-file-button">Upload File</label>
             <input type="file" id="file-upload" hidden onChange={(e) => {
-                setFileChosen(`${e.target.files[0].name} - ${e.target.files[0].size / 1000}Kb`);
+                setFile(e.target.files[0]);
             }} />
-             {fileChosen}
+            {file !== null && <p>{`${file.name} - ${file.size / 1000}Kb`}</p>}
+            {file === null && <p>No File Chosen.</p>}
+
+            <button className="generate-link" onClick={() => {createRoom()}}>Generate Link</button>
+
+            {generatedLink && 
+            <div>
+                <p>{`Share this link: localhost:5173/${peer._id}`}</p>
+            </div>}
         </div>
     )
 }
 
-export default UploadFile   ;
+export default UploadFile;

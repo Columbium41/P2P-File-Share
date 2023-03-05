@@ -9,7 +9,7 @@ function AppRoutes({ peer, setPeer }) {
         <main>
             <Routes>
                 {/* Home Page */}
-                <Route exact path="/" element={<UploadFile setPeer={setPeer} />} />
+                <Route exact path="/" element={<UploadFile peer={peer} setPeer={setPeer} />} />
 
                 {/* About Page */}
                 <Route exact path="/about" element={<About />} />

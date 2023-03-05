@@ -6,7 +6,8 @@
     gap: 1ch;
 }
 
-#upload-file-button {
+#upload-file-button,
+.generate-link {
     font-family: inherit;
 
     padding: 2ch;
@@ -16,11 +17,18 @@
     border-radius: 8px;
     transition: filter 0.25s;
 }
-#upload-file-button:hover {
+#upload-file-button:hover,
+.generate-link:hover {
     cursor: pointer;
     filter: grayscale(25%);
 }
 
 #file-upload {
     border: 1px solid red;
+}
+
+.generate-link {
+    padding: 1ch;
+    margin-top: 2ch;
+    background-color: #5684f5;
 }
