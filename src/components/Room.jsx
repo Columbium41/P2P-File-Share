@@ -2,11 +2,15 @@ import './Room.css';
 import {Peer} from 'peerjs';
 import {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
+import download from 'downloadjs';
 
 function Room({ peer }) {
     const peerId = useParams().id;
+    const [otherPeer, setOtherPeer] = useState(null);
 
-    const [otherPeer, setOtherPeer] = useState('');
+    const fileChunks = [];
+    var fileName="";
+    var fileSize=999;
 
     useEffect(() => {
         if (peer !== null) {
@@ -15,24 +19,35 @@ function Room({ peer }) {
                 console.log("connected to " + conn.peer);
                 setOtherPeer(conn.peer);
             });
-
-            // Answer call and listen for stream event
-            peer.on('call', function(call) {
-                call.answer();
-                console.log(call);
-            });
         }
-
         // Watcher entered the lobby, create new peer and connect
         else {
             peer = new Peer();
             peer.on("open", () => {
-                peer.connect(peerId);
-                setOtherPeer(peerId);
-                console.log(peer);
+                setOtherPeer(peer.connect(peerId));
             });
+
         }
     }, [peer])
+
+    useEffect(() => {
+        if (otherPeer !== null) {
+            otherPeer.on('data', (data) => {
+                if (data.type === "size") {
+                    fileSize = data.size;
+                }
+                else if (data.fileName) {
+                    fileName = data.fileName;
+                } else {
+                    fileChunks.push(data);
+                    if (fileSize !== null && fileChunks.length === fileSize) {
+                        const file = new Blob(fileChunks);
+                        download(file, fileName);
+                    }
+                }
+            });
+        }
+    }, [otherPeer]);
 
     return (
         <div className="about text-section">
@@ -42,6 +57,7 @@ function Room({ peer }) {
                 {`http://localhost:5173/${peerId}`}
             </p>
         </div>
+
     )
 }
 
