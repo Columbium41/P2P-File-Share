@@ -1,12 +1,10 @@
 import './Room.css';
 import {Peer} from 'peerjs';
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 
 function Room({ peer }) {
     const peerId = useParams().id;
-
-    const [otherPeer, setOtherPeer] = useState('');
 
     useEffect(() => {
         if (peer !== null) {
@@ -14,12 +12,6 @@ function Room({ peer }) {
             peer.on('connection', function(conn) {
                 console.log("connected to " + conn.peer);
                 setOtherPeer(conn.peer);
-            });
-
-            // Answer call and listen for stream event
-            peer.on('call', function(call) {
-                call.answer();
-                console.log(call);
             });
         }
 
@@ -35,12 +27,17 @@ function Room({ peer }) {
     }, [peer])
 
     return (
-        <div className="about text-section">
+        <div className="room">
             <h2>Room</h2>
-            <p>
-                Share this Link:&nbsp;
-                {`http://localhost:5173/${peerId}`}
-            </p>
+
+            <button className="download-button" onClick={() => {}}>
+                Download
+            </button>
+
+            <div>
+                <p>File Name</p>    
+                <progress value="0" max="100"></progress>
+            </div>
         </div>
     )
 }
