@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {Peer} from 'peerjs';
 import './UploadFile.css';
 
@@ -36,7 +35,7 @@ function UploadFile({ peer, setPeer, file, setFile, generatedLink, setGeneratedL
 
             {generatedLink && peer._id !== null &&
             <div>
-                <p>{`Share this link: localhost:5173/${peer._id}`}</p>
+                <p>{`Share this link: https://hth-watchparty.netlify.app//room/${peer._id}`}</p>
             </div>}
         </div>
     )
