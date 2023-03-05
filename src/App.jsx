@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import AppRoutes from './components/AppRoutes';
 import Footer from './components/Footer';
 import { BrowserRouter as Router } from 'react-router-dom'; 
-import { useState } from "react";
+import { useState } from 'react';
 
 function App() {
   const [peer, setPeer] = useState(null);
@@ -17,8 +17,7 @@ function App() {
         <Navbar></Navbar>
 
         {/* Main Content */}
-        <AppRoutes peer={peer} setPeer={setPeer} file={file} setFile={setFile} generatedLink={generatedLink} setGeneratedLink={setGeneratedLink} ></AppRoutes>
-
+        <AppRoutes peer={peer} setPeer={setPeer} file={file} setFile={setFile} generatedLink={generatedLink} setGeneratedLink={setGeneratedLink}></AppRoutes>
         {/* TODO: Add Footer */}
         <Footer></Footer>
       </Router>
