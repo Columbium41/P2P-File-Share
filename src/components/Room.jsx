@@ -1,11 +1,11 @@
-import './About.css';
+import './Room.css';
 import {Peer} from 'peerjs';
 import {useEffect, useState, useRef} from 'react';
 
-function About() {
+function Room() {
     const [id, setId] = useState("");
     const [peer, setPeer] = useState(null);
-    const [cPeer, setCpeer] = useState(null);
+    const [cPeer, setCpeer] = useState([]);
     const videoRef = useRef(null);
 
     useEffect(() => {
@@ -40,13 +40,7 @@ function About() {
 
     return (
         <div className="about text-section">
-            <h2>About</h2>
-            <p>
-                WatchParty is a web application that allows users to host/join a room where people can
-                screenshare their screens. This web application was made during&nbsp;
-                <a href="https://hackthehill.com/" target="_blank" className="text-link">Hack the Hill</a>, an annual
-                hackathon held at the University of Ottawa.
-            </p>
+            <h2>Room</h2>
             <input onChange={e => setId(e.target.value)} value={id}></input>
             <button onClick={() => {
                 peer.connect(id);
@@ -65,4 +59,4 @@ function About() {
     )
 }
 
-export default About;
+export default Room;
