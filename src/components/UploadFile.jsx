@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import {Peer} from 'peerjs';
 import './UploadFile.css';
+import download from 'downloadjs';
 
 function UploadFile({ peer, setPeer }) {
     const [file, setFile] = useState(null);
     const [generatedLink, setGeneratedLink] = useState(false);
+    const [otherPeer, setOtherPeer] = useState(null);
      
     // Function that runs whenever the 'Create Room' button is created
     const createRoom = () => {
@@ -14,10 +16,32 @@ function UploadFile({ peer, setPeer }) {
 
             newPeer.on("open", () => {
                 setGeneratedLink(true);
+                newPeer.on("connection", (conn) => {
+                    console.log("connected to ", conn);
+                    // file.arrayBuffer().then(buffer => {
+                    //     conn.send(buffer);
+                    //     console.log(buffer);
+                    //     console.log('zent');
+                    //     download(new Blob([buffer]));
+                    // })
+                    conn.on("error", (err) => {
+                        console.log(err);
+                    });
+    
+                    const blob = new Blob([file], { type: file.type })
+                    conn.on("open", () => {
+                        // conn.send({
+                        //     file: blob,
+                        //     filename: file.name,
+                        //     filetype: file.type
+                        //   })
+                        console.log(file);
+                        conn.send(file);
+                    })
+                });
             })
-            newPeer.on("connection", (conn) => {
-                console.log("connected to ", conn.peer);
-            });
+
+            newPeer.on("error", (err) => console.log(err));
         }
     }
 
@@ -35,7 +59,7 @@ function UploadFile({ peer, setPeer }) {
 
             {generatedLink && 
             <div>
-                <p>{`Share this link: localhost:5173/${peer._id}`}</p>
+                <p>{`Share this link: localhost:5173/room/${peer._id}`}</p>
             </div>}
         </div>
     )
